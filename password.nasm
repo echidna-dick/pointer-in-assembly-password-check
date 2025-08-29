@@ -4,13 +4,13 @@
 0x08048503 <+3>:  sub    esp, 0x8                 ; reseve 8 bytes for local variables!
 
 ; outside of loop
-0x08048506 <+6>:  mov    DWORD PTR [ebp-0x4], 0x0 ; loop counter variable
+0x08048506 <+6>:  mov    DWORD PTR [ebp-0x4], 0x0 ; loop counter variable lets take i
 0x0804850d <+13>: jmp    0x08048524               ; jump to 0x08048524 add 1 to i
 
 ; loop
-0x0804850f <+15>: mov    eax, DWORD PTR [ebp+0x8] ; varible stored in eax
+0x0804850f <+15>: mov    eax, DWORD PTR [ebp+0x8] ; pointer varible stored in eax
 0x08048512 <+18>: add    eax, DWORD PTR [ebp-0x4] ; add i to eax(variable) p[i](most likely)
-0x08048515 <+21>: movzx  eax, BYTE PTR [eax]      ; takes 1 byte and zero-extend eax, putts in al it's 100% a pointer
+0x08048515 <+21>: movzx  eax, BYTE PTR [eax]      ; takes 1 byte and zero-extend eax rest of 24 bits, putts in al ; always extends with 0s!
 0x08048518 <+24>: movsx  edx, al                  ; load in 32-bit example: 0x0000000f -> 0xf
 0x0804851b <+27>: mov    eax, DWORD PTR [ebp-0x4] ; load i into eax
 0x0804851e <+30>: add    eax, 0x2a                ; add 42 to i

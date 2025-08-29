@@ -27,20 +27,20 @@
 0x0804853a <+58>: ret                             ; finish!
 
 
-#(* so how do we get 0xd4(8-bit) to 32-bit? *)
-# here is how:
-#    firat we have 0xd4 is 1 byte or 8 bits(11010100 in binary) if we want it to be 32-bit we have to use assembly:
-#        movzx (zero-extend):
-#            0x000000D4 in CPU fills 24 bit with 0s:
-#            00000000    00000000    00000000    11010100
-#            so each piece is 8 bits so 8*3 is 24(wich we need to zero extend) and 8*4 is 32(all 32 bits)
-#
-#        movsx (sing-extend):
-#            CPU looks at highest bit (sign bit = 1 -> negative)
-#            so it will fill upper 24 bits with 1s(wich is F in hex):
-#            0xD4 -> 0xFFFFFFD4
-#            where F = 1111
-#            what i should WARN you about if the first binary number is 1 its negative as in our case so it will sing-extend with FF but if it a 0 then its positive and it will be replaced with 0!
-# finish!
+;(* so how do we get 0xd4(8-bit) to 32-bit? *)
+; here is how:
+;    firat we have 0xd4 is 1 byte or 8 bits(11010100 in binary) if we want it to be 32-bit we have to use assembly:
+;        movzx (zero-extend):
+;            0x000000D4 in CPU fills 24 bit with 0s:
+;            00000000    00000000    00000000    11010100
+;            so each piece is 8 bits so 8*3 is 24(wich we need to zero extend) and 8*4 is 32(all 32 bits)
+;
+;        movsx (sing-extend):
+;            CPU looks at highest bit (sign bit = 1 -> negative)
+;            so it will fill upper 24 bits with 1s(wich is F in hex):
+;            0xD4 -> 0xFFFFFFD4
+;            where F = 1111
+;            what i should WARN you about if the first binary number is 1 its negative as in our case so it will sing-extend with FF but if it a 0 then its positive and it will be replaced with 0!
+; finish!
 
 
